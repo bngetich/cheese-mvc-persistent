@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+    <div class="container">
+        <h1 th:text="${title}"></h1>
+        <nav th:replace="fragments :: navigation"></nav>
+        <p th:unless="${menus} and ${menus.iterator().hasNext()}">No Menus :(</p>
+        <ul>
+            <li th:each="menu : ${menus}">
+                <a th:text="${menu.name}" th:href="'/menu/view/' + ${menu.id}"></a>
+            </li>
+        </ul>
+
+        <a href="/menu/add">Add</a>
+    </div>
+</body>
+</html>
